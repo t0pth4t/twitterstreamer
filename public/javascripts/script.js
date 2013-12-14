@@ -13,5 +13,6 @@ $(function(){
 			});
 		}
 		$('#last-update').text(new Date().toTimeString());
+		$('#recent-tweet').text(data.recentTweet);
 	});
 })

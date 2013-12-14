@@ -12,12 +12,13 @@ var app = express();
 var server = http.createServer(app);
 
 
-var watchSymbols = ['node', 'dart', 'ruby', 'kayne'];
+var watchSymbols = ['kendrick', 'based god', 'schoolboy', 'kayne', 'childish gambino', 'eminem', 'migos', 'a$ap','tyler the creator'];
 
 
 var watchList = {
 	total: 0,
-	symbols: {}
+	symbols: {},
+	recentTweet: ""
 };
 
 _.each(watchSymbols, function(value){
@@ -57,10 +58,6 @@ sockets.sockets.on('connection',function(socket){
 	socket.emit('data',watchList);
 });
 
-//Instantiate the twitter component
-//You will need to get your own key. Don't worry, it's free. But I cannot provide you one
-//since it will instantiate a connection on my behalf and will drop all other streaming connections.
-//Check out: https://dev.twitter.com/
 var twit = new twitter({
     consumer_key: config.twitter.consumer_key,           
     consumer_secret: config.twitter.consumer_secret,        
@@ -83,6 +80,8 @@ twit.stream('statuses/filter', {track:watchSymbols},function(stream){
 		
 			if(text.indexOf(value.toLowerCase()) !== -1){
 				watchList.symbols[value]++;
+				if(tweet.lang === 'en')
+					watchList.recentTweet = tweet.user.screen_name + ": " + tweet.text;
 				claimed = true;
 			}
 		
