@@ -5,6 +5,7 @@ var express = require('express'),
 	cronJob = require('cron').CronJob,
     _ = require('underscore'),
     path = require('path'),
+    moment = require('moment'),
     config = require('./config');
 
 var app = express();
@@ -12,13 +13,14 @@ var app = express();
 var server = http.createServer(app);
 
 
-var watchSymbols = ['kendrick', 'based god', 'schoolboy', 'kayne', 'childish gambino', 'eminem', 'migos', 'a$ap','tyler the creator'];
+var watchSymbols = ['drake','kendrick', 'based god', 'schoolboy', 'kayne', 'childish gambino', 'chance the rapper', 'migos', 'a$ap','tyler the creator'];
 
 
 var watchList = {
 	total: 0,
 	symbols: {},
-	recentTweet: ""
+	recentTweet: "",
+	lastUpdated: ""
 };
 
 _.each(watchSymbols, function(value){
@@ -67,7 +69,7 @@ var twit = new twitter({
 
 twit.stream('statuses/filter', {track:watchSymbols},function(stream){
 	stream.on('data',function(tweet){
-
+		watchList.lastUpdated = moment().format('MMMM Do YYYY, h:mm:ss a');
 		var claimed = false;
 
 		if(tweet.text === undefined){

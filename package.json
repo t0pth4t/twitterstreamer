@@ -12,6 +12,7 @@
     "socket.io": "*",
     "underscore": "*",
     "cron": "*",
-    "ntwitter": "*"
+    "ntwitter": "*",
+    "moment": "*"
   }
 }

@@ -12,7 +12,8 @@ $(function(){
 				$(this).css('background-color', 'rgb(' + Math.round(val * 255) +',0,0)');
 			});
 		}
-		$('#last-update').text(new Date().toTimeString());
+
+		$('#last-update').text(data.lastUpdated);
 		$('#recent-tweet').text(data.recentTweet);
 	});
 })
