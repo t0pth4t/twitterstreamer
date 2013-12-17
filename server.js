@@ -13,7 +13,7 @@ var app = express();
 var server = http.createServer(app);
 
 
-var watchSymbols = ['node.js','angular.js','gruntjs','grunt.js','meteor.js','meteorjs','firebase','angular','socketio','nodejs','bower', 'socket.io', 'angularfire', 'ember.js','emberjs','sailjs', 'backbone.js','expressjs', 'express.js', 'sail.js','asm.js'];
+var watchSymbols = ['node.js','angular.js','grunt.js','meteor.js','firebase','angular', 'socket.io', 'angularfire', 'ember.js','sailjs', 'backbone.js', 'express.js', 'sail.js','asm.js','three.js'];
 
 
 var watchList = {
@@ -80,7 +80,7 @@ twit.stream('statuses/filter', {track:watchSymbols},function(stream){
 
 		_.each(watchSymbols, function(value){
 		
-			if(text.indexOf(value.toLowerCase()) !== -1){
+			if(text.indexOf(value.toLowerCase()) !== -1 || text.indexOf(value.replace('.','')) !== -1){
 				watchList.symbols[value]++;
 				if(tweet.lang === 'en')
 					watchList.recentTweet = tweet.user.screen_name + ": " + tweet.text;
