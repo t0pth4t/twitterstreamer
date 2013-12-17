@@ -13,7 +13,7 @@ var app = express();
 var server = http.createServer(app);
 
 
-var watchSymbols = ['node.js','angular.js', 'socket.io', 'angularfire', 'ember.js', 'backbone.js', 'express.js', 'sail.js','asm.js'];
+var watchSymbols = ['node.js','angular.js','gruntjs','grunt.js','meteor.js','meteorjs','firebase','angular','socketio','nodejs','bower', 'socket.io', 'angularfire', 'ember.js','emberjs','sailjs', 'backbone.js','expressjs', 'express.js', 'sail.js','asm.js'];
 
 
 var watchList = {
