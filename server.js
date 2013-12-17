@@ -13,7 +13,7 @@ var app = express();
 var server = http.createServer(app);
 
 
-var watchSymbols = ['drake','kendrick', 'based god', 'schoolboy', 'kayne', 'childish gambino', 'chance the rapper', 'migos', 'a$ap','tyler the creator'];
+var watchSymbols = ['node.js','angular.js', 'socket.io', 'angularfire', 'ember.js', 'backbone.js', 'express.js', 'sail.js','asm.js'];
 
 
 var watchList = {
